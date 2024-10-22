@@ -1,6 +1,7 @@
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
+import { Link } from './components'
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       <GlobalStyle />
 
       <div>
-        <p>Hello World</p>
+        <Link title="Label" url="http://google.com" />
       </div>
     </ThemeProvider>
   )
