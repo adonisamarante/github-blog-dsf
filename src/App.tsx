@@ -1,7 +1,7 @@
 import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
-import { Input } from './components'
+import { Card } from './components'
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <GlobalStyle />
 
       <div style={{ padding: '20px' }}>
-        <Input />
+        <Card />
       </div>
     </ThemeProvider>
   )
