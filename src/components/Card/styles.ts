@@ -29,6 +29,7 @@ export const TitleWrapper = styled.div`
   :first-child {
     flex: 1;
     font-size: 1.25rem;
+    font-weight: 700;
     color: ${(props) => props.theme['base-title']};
   }
 
