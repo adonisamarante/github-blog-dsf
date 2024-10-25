@@ -28,9 +28,16 @@ export const TitleWrapper = styled.div`
 
   :first-child {
     flex: 1;
+    max-width: 17.687rem;
     font-size: 1.25rem;
     font-weight: 700;
     color: ${(props) => props.theme['base-title']};
+
+    // for multiline text ellipsis to work
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   :last-child {
@@ -41,9 +48,9 @@ export const TitleWrapper = styled.div`
 
 export const DescriptionWrapper = styled.span`
   max-height: 7rem;
-  overflow: hidden;
 
   // for multiline text ellipsis to work
+  overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
