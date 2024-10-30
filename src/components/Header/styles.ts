@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 18.5rem;
   position: relative;
 
-  background: linear-gradient(#0b1b2b 20%, #3294f8 250%);
+  background: linear-gradient(#0b1b2b 30%, #3294f8 350%);
 
   display: flex;
   justify-content: space-between;
