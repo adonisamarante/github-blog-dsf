@@ -5,6 +5,7 @@ export const StyledLink = styled.a`
   color: ${(props) => props.theme.blue};
 
   text-transform: uppercase;
+  font-size: 0.75rem;
   font-weight: 700;
 
   display: flex;
@@ -14,6 +15,6 @@ export const StyledLink = styled.a`
   text-decoration: none;
 
   &:hover {
-    border-bottom: 2px solid ${(props) => props.theme.blue};
+    border-bottom: 1px solid ${(props) => props.theme.blue};
   }
 `
