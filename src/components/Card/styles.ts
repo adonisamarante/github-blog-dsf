@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 26rem;
-  height: 16.25rem;
+  width: calc(26rem -2px);
+  height: calc(16.25rem - 2px);
 
   background-color: ${(props) => props.theme['base-post']};
   padding: 2rem;
   border-radius: 10px;
+
+  border: 2px solid ${(props) => props.theme['base-post']};
+  transition: border-color 0.2s;
 
   display: flex;
   flex-direction: column;
@@ -14,8 +17,7 @@ export const Container = styled.div`
 
   &:hover {
     cursor: pointer;
-    padding: calc(2rem - 2px);
-    border: 2px solid ${(props) => props.theme['base-label']};
+    border-color: ${(props) => props.theme['base-label']};
   }
 `
 
