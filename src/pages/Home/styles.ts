@@ -2,11 +2,10 @@ import styled from 'styled-components'
 
 export const Containter = styled.div`
   width: 54rem;
+  padding-bottom: 3.5rem;
 
   display: flex;
   flex-direction: column;
-
-  position: relative;
 `
 
 export const ProfileWrapper = styled.div`
@@ -17,8 +16,8 @@ export const ProfileWrapper = styled.div`
   border-radius: 10px;
   background: ${(props) => props.theme['base-profile']};
 
-  position: absolute;
-  top: -5.5rem;
+  margin-top: -5.5rem;
+  z-index: 99;
 
   display: flex;
   gap: 2rem;
@@ -74,4 +73,37 @@ export const LinkWrapper = styled.div`
   :first-child {
     color: ${(props) => props.theme['base-label']};
   }
+`
+
+export const SearchWrapper = styled.div`
+  margin-top: 4.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+
+    :first-child {
+      font-size: 1.125rem;
+      font-weight: 700;
+    }
+
+    :last-child {
+      font-size: 0.875rem;
+      color: ${(props) => props.theme['base-span']};
+    }
+  }
+`
+
+export const CardsGrid = styled.div`
+  margin-top: 3rem;
+
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 2rem;
+  grid-column-gap: 2rem;
 `

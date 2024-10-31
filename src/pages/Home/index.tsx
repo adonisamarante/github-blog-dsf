@@ -1,14 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faBuilding, faUserGroup } from '@fortawesome/free-solid-svg-icons'
-import { Link } from '../../components'
+import { Card, Input, Link } from '../../components'
 import {
+  CardsGrid,
   Containter,
   LinkWrapper,
   ProfileDescription,
   ProfileInfo,
   ProfileLinksContainer,
   ProfileWrapper,
+  SearchWrapper,
 } from './styles'
 
 export function Home() {
@@ -42,6 +44,23 @@ export function Home() {
           </ProfileLinksContainer>
         </ProfileInfo>
       </ProfileWrapper>
+
+      <SearchWrapper>
+        <div>
+          <span>Publicações</span>
+          <span>6 publicações</span>
+        </div>
+        <Input />
+      </SearchWrapper>
+
+      <CardsGrid>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </CardsGrid>
     </Containter>
   )
 }
