@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Containter = styled.div`
+export const Container = styled.div`
   width: 54rem;
   padding-bottom: 3.5rem;
 

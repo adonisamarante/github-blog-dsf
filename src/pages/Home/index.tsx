@@ -4,7 +4,7 @@ import { faBuilding, faUserGroup } from '@fortawesome/free-solid-svg-icons'
 import { Card, Input, Link } from '../../components'
 import {
   CardsGrid,
-  Containter,
+  Container,
   LinkWrapper,
   ProfileDescription,
   ProfileInfo,
@@ -23,7 +23,7 @@ export function Home() {
   }
 
   return (
-    <Containter>
+    <Container>
       <ProfileWrapper>
         <img src="" alt="" />
         <ProfileInfo>
@@ -31,11 +31,13 @@ export function Home() {
             <span>Cameron Williamson</span>
             <Link title="GITHUB" url="https://github.com/adonisamarante" />
           </div>
+
           <ProfileDescription>
             Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
             viverra massa quam dignissim aenean malesuada suscipit. Nunc,
             volutpat pulvinar vel mass.
           </ProfileDescription>
+
           <ProfileLinksContainer>
             <LinkWrapper>
               <FontAwesomeIcon icon={faGithub} size="lg" />
@@ -73,6 +75,6 @@ export function Home() {
           )
         })}
       </CardsGrid>
-    </Containter>
+    </Container>
   )
 }
