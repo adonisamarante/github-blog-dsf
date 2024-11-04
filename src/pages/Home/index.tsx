@@ -12,8 +12,16 @@ import {
   ProfileWrapper,
   SearchWrapper,
 } from './styles'
+import IssuesMock from '../../mocks/Issues.json'
+import { useNavigate } from 'react-router-dom'
 
 export function Home() {
+  const navigate = useNavigate()
+
+  function handleNavigateIssuePage() {
+    navigate('/issue-info')
+  }
+
   return (
     <Containter>
       <ProfileWrapper>
@@ -54,12 +62,16 @@ export function Home() {
       </SearchWrapper>
 
       <CardsGrid>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {IssuesMock.data.map((item) => {
+          console.log(item)
+          return (
+            <Card
+              key={item.id}
+              issue={item}
+              onClick={handleNavigateIssuePage}
+            />
+          )
+        })}
       </CardsGrid>
     </Containter>
   )
