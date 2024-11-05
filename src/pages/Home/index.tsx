@@ -14,12 +14,13 @@ import {
 } from './styles'
 import IssuesMock from '../../mocks/Issues.json'
 import { useNavigate } from 'react-router-dom'
+import { IIssue } from '../../interfaces/issue'
 
 export function Home() {
   const navigate = useNavigate()
 
-  function handleNavigateIssuePage() {
-    navigate('/issue-info')
+  function handleNavigateIssuePage(issue: IIssue) {
+    navigate('/issue-info', { state: issue })
   }
 
   return (
@@ -70,7 +71,7 @@ export function Home() {
             <Card
               key={item.id}
               issue={item}
-              onClick={handleNavigateIssuePage}
+              onClick={() => handleNavigateIssuePage(item)}
             />
           )
         })}

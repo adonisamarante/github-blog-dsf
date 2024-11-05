@@ -1,11 +1,5 @@
+import { IIssue } from '../../interfaces/issue'
 import { Container, DescriptionWrapper, TitleWrapper } from './styles'
-
-interface IIssue {
-  id: number
-  title: string
-  date: string
-  description: string
-}
 
 interface ICardProps {
   issue: IIssue

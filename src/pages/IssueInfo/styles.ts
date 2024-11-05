@@ -40,13 +40,19 @@ export const ButtonsWrapper = styled.div`
   justify-content: space-between;
   align-items: start;
 
-  span {
+  > button {
     font-size: 0.75rem;
     color: ${(props) => props.theme.blue};
+    background: transparent;
+    border: 0;
 
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 `
 
