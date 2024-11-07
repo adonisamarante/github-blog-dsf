@@ -13,14 +13,12 @@ import {
   LinkWrapper,
   ProfileLinksContainer,
 } from './styles'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { IIssue } from '../../interfaces/issue'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export function IssueInfo() {
-  const location = useLocation()
   const navigate = useNavigate()
 
-  const issue: IIssue = location.state
+  const { issueId } = useParams()
 
   function handleReturnPage() {
     navigate(-1)
@@ -37,12 +35,12 @@ export function IssueInfo() {
           <Link title="Ver no Github" url="" />
         </ButtonsWrapper>
 
-        <span>{issue.title}</span>
+        <span>{issueId}</span>
 
         <ProfileLinksContainer>
           <LinkWrapper>
             <FontAwesomeIcon icon={faGithub} size="lg" />
-            <span>cameronwll {issue.id}</span>
+            <span>cameronwll {issueId}</span>
           </LinkWrapper>
           <LinkWrapper>
             <FontAwesomeIcon icon={faCalendarDay} />
@@ -56,7 +54,7 @@ export function IssueInfo() {
       </IssueTitleWrapper>
 
       <div>
-        <span>{issue.description}</span>
+        <span>{issueId}</span>
       </div>
     </Container>
   )
