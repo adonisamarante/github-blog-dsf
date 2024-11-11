@@ -17,7 +17,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 export function IssueInfo() {
   const navigate = useNavigate()
-
   const { issueId } = useParams()
 
   function handleReturnPage() {
