@@ -12,10 +12,10 @@ import {
   ProfileWrapper,
   SearchWrapper,
 } from './styles'
-import IssuesMock from '../../mocks/Issues.json'
 import { useNavigate } from 'react-router-dom'
 import { useCallback, useEffect, useState } from 'react'
 import { api } from '../../lib/axios'
+import { IIssue } from '../../interfaces/issue'
 
 interface IUser {
   name: string
@@ -28,6 +28,7 @@ interface IUser {
 
 export function Home() {
   const [userInfo, setUserInfo] = useState<IUser>()
+  const [issuesList, setIssuesList] = useState<IIssue[]>()
   const navigate = useNavigate()
 
   const fetchUser = useCallback(async () => {
@@ -43,12 +44,32 @@ export function Home() {
     })
   }, [])
 
+  const fetchIssues = useCallback(async () => {
+    const response = await api.get(
+      'repos/rocketseat-education/reactjs-github-blog-challenge/issues',
+    )
+    const data = response.data as IIssue[]
+
+    const issuesToList: IIssue[] = []
+
+    data.forEach((item: IIssue) => {
+      issuesToList.push({
+        id: item.id,
+        title: item.title,
+        body: item.body,
+      })
+    })
+
+    setIssuesList(issuesToList)
+  }, [])
+
   function handleNavigateIssuePage(issueId: number) {
     navigate(`/issue-info/${issueId}`)
   }
 
   useEffect(() => {
     fetchUser()
+    fetchIssues()
   }, [])
 
   return (
@@ -83,13 +104,13 @@ export function Home() {
       <SearchWrapper>
         <div>
           <span>Publicações</span>
-          <span>6 publicações</span>
+          <span>{issuesList?.length} publicações</span>
         </div>
         <Input />
       </SearchWrapper>
 
       <CardsGrid>
-        {IssuesMock.data.map((item) => {
+        {issuesList?.map((item) => {
           return (
             <Card
               key={item.id}
