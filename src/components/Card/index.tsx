@@ -11,10 +11,10 @@ export function Card({ issue, onClick }: ICardProps) {
     <Container onClick={onClick}>
       <TitleWrapper>
         <p>{issue.title}</p>
-        <p>{issue.date}</p>
+        <p>Ha 1 dia</p>
       </TitleWrapper>
 
-      <DescriptionWrapper>{issue.description}</DescriptionWrapper>
+      <DescriptionWrapper>{issue.body}</DescriptionWrapper>
     </Container>
   )
 }
