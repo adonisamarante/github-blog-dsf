@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: calc(26rem -2px);
+  width: calc(26rem - 2px);
   height: calc(16.25rem - 2px);
 
   background-color: ${(props) => props.theme['base-post']};
