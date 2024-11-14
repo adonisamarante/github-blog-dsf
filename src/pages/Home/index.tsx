@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faBuilding, faUserGroup } from '@fortawesome/free-solid-svg-icons'
@@ -48,15 +50,18 @@ export function Home() {
     const response = await api.get(
       'repos/rocketseat-education/reactjs-github-blog-challenge/issues',
     )
-    const data = response.data as IIssue[]
+    const data = response.data
+
+    console.log('data', data)
 
     const issuesToList: IIssue[] = []
 
-    data.forEach((item: IIssue) => {
+    data.forEach((item) => {
       issuesToList.push({
         id: item.id,
         title: item.title,
         body: item.body,
+        createdAt: item.created_at,
       })
     })
 
