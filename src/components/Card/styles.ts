@@ -45,6 +45,7 @@ export const TitleWrapper = styled.div`
   :last-child {
     font-size: 0.875rem;
     color: ${(props) => props.theme['base-span']};
+    text-transform: capitalize;
   }
 `
 

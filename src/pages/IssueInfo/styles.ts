@@ -74,3 +74,34 @@ export const LinkWrapper = styled.div`
     color: ${(props) => props.theme['base-label']};
   }
 `
+
+export const MarkdownWrapper = styled.div`
+  width: 100%;
+  padding: 2.5rem 2rem;
+
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+
+  h1,
+  h2,
+  h3 {
+    margin-top: 20px;
+  }
+
+  p {
+    margin-bottom: 16px;
+  }
+
+  a {
+    color: #0366d6;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+`

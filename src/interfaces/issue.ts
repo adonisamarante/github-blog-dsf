@@ -10,4 +10,9 @@ export interface IIssue {
   title: string
   body: string
   createdAt: string
+  htmlURL: string
+  comments: number
+  user: {
+    login: string
+  }
 }
