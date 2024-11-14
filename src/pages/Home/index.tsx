@@ -58,7 +58,7 @@ export function Home() {
 
     data.forEach((item) => {
       issuesToList.push({
-        id: item.id,
+        id: item.number,
         title: item.title,
         body: item.body,
         createdAt: item.created_at,
