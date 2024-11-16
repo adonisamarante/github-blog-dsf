@@ -18,6 +18,15 @@ import { useNavigate } from 'react-router-dom'
 import { useCallback, useEffect, useState } from 'react'
 import { api } from '../../lib/axios'
 import { IIssue } from '../../interfaces/issue'
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+
+const searchFormSchema = z.object({
+  query: z.string(),
+})
+
+type SearchFormInputs = z.infer<typeof searchFormSchema>
 
 interface IUser {
   name: string
@@ -52,10 +61,7 @@ export function Home() {
     )
     const data = response.data
 
-    console.log('data', data)
-
     const issuesToList: IIssue[] = []
-
     data.forEach((item) => {
       issuesToList.push({
         id: item.number,
@@ -67,6 +73,14 @@ export function Home() {
 
     setIssuesList(issuesToList)
   }, [])
+
+  const { handleSubmit } = useForm<SearchFormInputs>({
+    resolver: zodResolver(searchFormSchema),
+  })
+
+  function handleSearchIssues() {
+    console.log('search issue')
+  }
 
   function handleNavigateIssuePage(issueId: number) {
     navigate(`/issue-info/${issueId}`)
@@ -106,7 +120,7 @@ export function Home() {
         </ProfileInfo>
       </ProfileWrapper>
 
-      <SearchWrapper>
+      <SearchWrapper onSubmit={handleSubmit(handleSearchIssues)}>
         <div>
           <span>Publicações</span>
           <span>{issuesList?.length} publicações</span>

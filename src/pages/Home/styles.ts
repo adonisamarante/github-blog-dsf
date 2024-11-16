@@ -75,7 +75,7 @@ export const LinkWrapper = styled.div`
   }
 `
 
-export const SearchWrapper = styled.div`
+export const SearchWrapper = styled.form`
   margin-top: 4.5rem;
 
   display: flex;
