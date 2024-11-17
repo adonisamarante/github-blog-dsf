@@ -19,7 +19,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { api } from '../../lib/axios'
 import { IIssue } from '../../interfaces/issue'
 import { z } from 'zod'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 const searchFormSchema = z.object({
@@ -55,10 +55,13 @@ export function Home() {
     })
   }, [])
 
-  const fetchIssues = useCallback(async () => {
-    const response = await api.get(
-      'repos/rocketseat-education/reactjs-github-blog-challenge/issues',
-    )
+  const fetchIssues = useCallback(async (query?: string) => {
+    console.log('entrou', query)
+    const response = await api.get('search/issues/', {
+      params: {
+        q: `q=${query ?? ''}%20repo:rocketseat-education/reactjs-github-blog-challenge`,
+      },
+    })
     const data = response.data
 
     const issuesToList: IIssue[] = []
@@ -74,12 +77,13 @@ export function Home() {
     setIssuesList(issuesToList)
   }, [])
 
-  const { handleSubmit } = useForm<SearchFormInputs>({
+  const { handleSubmit, control } = useForm<SearchFormInputs>({
     resolver: zodResolver(searchFormSchema),
   })
 
-  function handleSearchIssues() {
-    console.log('search issue')
+  function handleSearchIssues(data: SearchFormInputs) {
+    console.log('search issue', data.query)
+    fetchIssues(data.query)
   }
 
   function handleNavigateIssuePage(issueId: number) {
@@ -125,7 +129,11 @@ export function Home() {
           <span>Publicações</span>
           <span>{issuesList?.length} publicações</span>
         </div>
-        <Input />
+        <Controller
+          name="query"
+          control={control}
+          render={({ field }) => <Input id="query" {...field} />}
+        />
       </SearchWrapper>
 
       <CardsGrid>

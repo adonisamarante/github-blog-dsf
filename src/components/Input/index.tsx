@@ -1,5 +1,6 @@
+import { InputHTMLAttributes } from 'react'
 import { StyledInput } from './styles'
 
-export function Input() {
-  return <StyledInput placeholder="Buscar conteúdo" />
+export function Input({ ...props }: InputHTMLAttributes<HTMLInputElement>) {
+  return <StyledInput placeholder="Buscar conteúdo" {...props} />
 }
