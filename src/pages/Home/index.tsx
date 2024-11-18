@@ -57,22 +57,29 @@ export function Home() {
 
   const fetchIssues = useCallback(async (query?: string) => {
     console.log('entrou', query)
-    const response = await api.get('search/issues/', {
+    const response = await api.get('search/issues', {
       params: {
-        q: `q=${query ?? ''}%20repo:rocketseat-education/reactjs-github-blog-challenge`,
+        q: `${query ? `${query}%20` : ''}repo:rocketseat-education/reactjs-github-blog-challenge`,
       },
     })
-    const data = response.data
+
+    const data = response.data.items
+
+    console.log('data', data)
 
     const issuesToList: IIssue[] = []
-    data.forEach((item) => {
-      issuesToList.push({
-        id: item.number,
-        title: item.title,
-        body: item.body,
-        createdAt: item.created_at,
+    if (data) {
+      data.forEach((item) => {
+        issuesToList.push({
+          id: item.number,
+          title: item.title,
+          body: item.body,
+          createdAt: item.created_at,
+        })
       })
-    })
+    }
+
+    console.log('list', issuesToList)
 
     setIssuesList(issuesToList)
   }, [])
@@ -82,7 +89,6 @@ export function Home() {
   })
 
   function handleSearchIssues(data: SearchFormInputs) {
-    console.log('search issue', data.query)
     fetchIssues(data.query)
   }
 
